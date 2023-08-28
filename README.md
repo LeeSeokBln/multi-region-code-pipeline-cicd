@@ -7,7 +7,7 @@
 
 ### Create Code Commit & Push Application
 ```
-$ aws codecommit create-repository --repository-name aws-codecommit --region ap-northeast-2
+$ aws codecommit create-repository --repository-name seokbin-repo --region ap-northeast-2
 ```
 buildspec.yaml을 파일을 작성
 spec/buildspec.yaml
@@ -17,7 +17,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 12
+      nodejs: 16
 
   pre_build:
     commands:
@@ -103,33 +103,40 @@ artifacts:
 ```
 파일 구조 확인
 
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/40f0b9cc-9e23-4da5-8184-45bb3c60b90d)
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/101256150/261183424-40f0b9cc-9e23-4da5-8184-45bb3c60b90d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T023302Z&X-Amz-Expires=300&X-Amz-Signature=5c81ac70b9b8856c105221094d553e51f8f505fda5285ab8fe9a11158e02a355&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
 
 Code Commit에 Push
 ```
 $ git init
-$ git remote add origin https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/aws-codecommit
-$ git add -A
-$ git commit -m 'init'
+$ git remote add origin https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/seokbin-repo
+$ git add .
+$ git commit -m "my first commit"
 $ git push origin master
 ```
+### ap-northeast-1 & ap-northeast-2 KMS 키 생성
+
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263580119-6002bd1c-dafa-4339-b24e-eb334a46a8f8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024208Z&X-Amz-Expires=300&X-Amz-Signature=05483ca2853e6cbd8dab47bb0abb98a3eaf1ac7ff866e6d7e04a71f83149bc78&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
 
 ### Create S3 Bucket & Code Build
 S3 BUcket을 생성
 ```
-$ aws s3 mb s3://aws-s3-bucket-pjm1024cl
+$ aws s3 mb s3://skills-s3-bucket-seokbin
 ```
 Code Build Project를 생성
 
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/91fb8c5e-35ec-49df-b29f-645e7352e1eb)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/4e24f19d-6962-451f-bb8f-4b864ef33c6d)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/11b4f2b4-ef5e-42af-b430-2133a49be045)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/0f509c93-efd8-4ab1-8321-e05e1bcba285)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/b922d847-7828-431e-b650-1b590911f8d9)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/aa542e7a-ac27-433c-9cc9-e725722e9d3e)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/bdb21206-5ed8-4b4e-9bb9-5b54e968aa6d)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/00fa4a10-cba7-40c3-80e7-d2d2c35e5a6f)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/c762d3ac-c246-414e-abb6-6f5580ecd64c)
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579187-5b75621c-fef3-4f41-b29e-6b41cb43dc97.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T023527Z&X-Amz-Expires=300&X-Amz-Signature=5c38bed83fae2a025875f55b6418d96d7c07d392f1db7b0fda8db9e1555b2b57&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
+
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579311-21b00abb-11e7-495f-8127-1d33392697e5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T023627Z&X-Amz-Expires=300&X-Amz-Signature=bb66d49844fcc93fb09e9353cbdd3d1e1af2130ee9dd7250ad176ce0b6b752bb&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
+
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579493-9543b92d-861b-4906-8956-7425910a0b68.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024229Z&X-Amz-Expires=300&X-Amz-Signature=3a32e921595762fd6aa5e096bfcb10ee69c9f8be22cc0cf16735785b75864ef1&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807" />
+
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579535-78a56652-339a-4705-93bf-1a6fc8b07ab9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024234Z&X-Amz-Expires=300&X-Amz-Signature=ca1539d6344295bafdae742aa7e4cb5ecb167367c0b25453c034af47d125b37b&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807" />
+
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579795-c2c67e5e-03cc-43d6-892a-ff2449423f61.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024241Z&X-Amz-Expires=300&X-Amz-Signature=c0ffbbf4387cbd8bebc853a355afb3e02a559de3005d3c3eb4caf12debd669be&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807" />
+
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263580297-4e535ffc-492e-43e2-bf9a-29019fa91a8b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024310Z&X-Amz-Expires=300&X-Amz-Signature=d0334282eba81ff37740b4343dfcef10f7f7f9922b7f389197d664005a33226a&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807" />
+
+
 Code Build Project를 생성 그 후 해당 Code Build의 IAM Role에 아래와 같은 권한을 부여
 ```
 {

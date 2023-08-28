@@ -103,7 +103,8 @@ artifacts:
 ```
 파일 구조 확인
 
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/101256150/261183424-40f0b9cc-9e23-4da5-8184-45bb3c60b90d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T023302Z&X-Amz-Expires=300&X-Amz-Signature=5c81ac70b9b8856c105221094d553e51f8f505fda5285ab8fe9a11158e02a355&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
+![261183424-40f0b9cc-9e23-4da5-8184-45bb3c60b90d](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/795f6130-dfb7-49c9-b149-0a754fa13448)
+
 
 Code Commit에 Push
 ```
@@ -124,9 +125,9 @@ $ aws s3 mb s3://skills-s3-bucket-seokbin
 ```
 Code Build Project를 생성
 
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579187-5b75621c-fef3-4f41-b29e-6b41cb43dc97.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T023527Z&X-Amz-Expires=300&X-Amz-Signature=5c38bed83fae2a025875f55b6418d96d7c07d392f1db7b0fda8db9e1555b2b57&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
+![263579187-5b75621c-fef3-4f41-b29e-6b41cb43dc97](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/d0aa8055-4b2e-4342-afbf-d53d376d7458)
 
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579311-21b00abb-11e7-495f-8127-1d33392697e5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T023627Z&X-Amz-Expires=300&X-Amz-Signature=bb66d49844fcc93fb09e9353cbdd3d1e1af2130ee9dd7250ad176ce0b6b752bb&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807"/>
+![263579311-21b00abb-11e7-495f-8127-1d33392697e5](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/57e6e884-abcc-456e-9990-bd0a7781e52d)
 
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263579493-9543b92d-861b-4906-8956-7425910a0b68.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024229Z&X-Amz-Expires=300&X-Amz-Signature=3a32e921595762fd6aa5e096bfcb10ee69c9f8be22cc0cf16735785b75864ef1&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807" />
 
@@ -136,6 +137,9 @@ Code Build Project를 생성
 
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86287920/263580297-4e535ffc-492e-43e2-bf9a-29019fa91a8b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230828%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230828T024310Z&X-Amz-Expires=300&X-Amz-Signature=d0334282eba81ff37740b4343dfcef10f7f7f9922b7f389197d664005a33226a&X-Amz-SignedHeaders=host&actor_id=86287920&key_id=0&repo_id=679512807" />
 
+![261183640-bdb21206-5ed8-4b4e-9bb9-5b54e968aa6d](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/68ffbaf5-cd8b-4a7d-8926-eb803eae21aa)
+
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/d00455f7-85c8-47ad-882b-3eed7dd93527)
 
 Code Build Project를 생성 그 후 해당 Code Build의 IAM Role에 아래와 같은 권한을 부여
 ```
@@ -149,7 +153,7 @@ Code Build Project를 생성 그 후 해당 Code Build의 IAM Role에 아래와 
                 "kms:Encrypt",
                 "kms:GenerateDataKey"
             ],
-            "Resource": "arn:aws:kms:ap-northeast-2:948216186415:key/daec6df1-4cab-4187-890a-2a7704116e2e"
+            "Resource": "arn:aws:kms:ap-northeast-2:**********:key/*******************"
         }
     ]
 }
@@ -166,25 +170,25 @@ IAM Role을 하나 생성
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": "kms:Decrypt",
-            "Resource": "arn:aws:kms:ap-northeast-2:948216186415:key/*"
+            "Resource": "arn:aws:kms:ap-northeast-2:**********:key/*"
         }
     ]
 }
 ```
 ap-northeast-1 리전으로 이동해서 Code Deploy를 생성
 
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/8d5cc8f4-5bbe-4e74-b413-e9f45516f67f)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/548aaf78-b7f1-438a-9a2e-2d522f2beca9)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/3df7e926-dc48-4c46-96af-6c5c69c11af5)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/9edf9b2f-b06d-442e-a913-002dfbba877e)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/b630b72a-ede8-47a7-bd5c-6a14b4b822b6)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/c9e6a31e-0d42-4a2b-9787-31cc656840c8)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/3f5b0f2f-fd84-48a2-8b4e-46da4de307ae)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/e5d9c8fc-f2cf-4637-b251-cdc9585ae45c)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/c9357d11-be18-43d5-9895-93f855e66ef6)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/2e65a4f2-5938-4ed1-b2e3-3e27f2aba1a9)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/38f2cd05-c9a3-45b1-be06-ea1411effcff)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/93f8c35f-8ad3-4521-af93-bf0e10c6ae0e)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/6bc7524c-0880-4b18-aa8b-e1dedcdc2790)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/83d2f05b-3617-4245-936e-1f90c26dee8f)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/a7d9cc1d-9a47-494c-9e60-fe8393ec5e23)
+
 
 EC2 생성
 
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/02100aba-816d-43ad-b73c-8e4d7cb6de5d)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/da4e8dbc-1265-4b0d-86e3-30e227422adf)
 
 IAM Role을 Attach
 
@@ -197,11 +201,12 @@ IAM Role을 Attach
 
 서울 리전으로 옮기고 Code Pipeline을 생성
 
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/bac2c56d-4a60-43a9-a6a1-ecaf2d262912)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/73940d2a-fc34-41c9-be02-aafd3da3e614)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/0dd12833-4c89-470b-8420-384d71c11fda)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/42921055-5d13-43b1-b200-131d7c1c97b1)
-![Untitled](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/101256150/63344894-a135-4073-ae3e-b1a26ae62c22)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/5208bc4a-1387-44f9-9735-d8157badd6bf)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/95708c6c-8f68-4dee-b351-ba8817d8d7dc)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/12f232f6-243a-40be-b1ab-41ee7090c075)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/edea061f-93f6-4be2-b814-771bfd2ec1c8)
+![image](https://github.com/LeeSeokBln/multi-region-code-pipeline-cicd/assets/86287920/7f7bde6c-d26a-46d5-8e4d-7d3fae442516)
+
 Pipeline을 생성
 
 만약 CodeBuild에서 Access Denied가 뜰 경우 아래와 같이 해당 Build의 IAM Role의 정책을 수정해준다
